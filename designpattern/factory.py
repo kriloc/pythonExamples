@@ -61,7 +61,6 @@ def main():
             print 'phone number({}):'.format(p.attrib['type']), p.text
     print
 
-
     json_factory = connect_to('data/donut.json')
     json_data = json_factory.parsed_data
     print('found: {} donuts'.format(len(json_data)))
