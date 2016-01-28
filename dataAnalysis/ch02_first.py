@@ -53,6 +53,7 @@ import pandas as pd
 import numpy as np
 
 frame = DataFrame(records)
+# print type(frame)
 print "summary view: \n 前10筆: \n", frame['tz'][:10]
 
 tz_counts = frame['tz'].value_counts()
@@ -65,4 +66,24 @@ tz_counts = clean_tz.value_counts()
 print "\n將NA補上： \n", tz_counts[:5]
 print "\n其中Missing的有：", tz_counts['Missing'], "筆."
 
+# 繪出圖形
+ax = tz_counts[:10].plot(kind='barh', rot=0)
+fig = ax.get_figure()
+fig.savefig('asdf.png')
 
+"""
+    對 windows 與非windows用戶分開統計
+"""
+# 移除有缺失的 agent
+cframe = frame[frame.a.notnull()]
+operatingSystem = np.where(cframe['a'].str.contains('Windows'), 'Windows', 'Not Windows')
+# print operatingSystem[:5]
+
+# 根據時區對OS分組
+by_tz_os = cframe.groupby(['tz', operatingSystem])
+agg_count = by_tz_os.size().unstack().fillna(0)
+print agg_count[:10]
+
+# 根據最常出現排序
+indexer = agg_count.sum(1).argsort()
+print "最常出現時區： \n", indexer[:10]
