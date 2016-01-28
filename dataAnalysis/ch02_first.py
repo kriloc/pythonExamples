@@ -87,3 +87,8 @@ print agg_count[:10]
 # 根據最常出現排序
 indexer = agg_count.sum(1).argsort()
 print "最常出現時區： \n", indexer[:10]
+
+count_subset = agg_count.take(indexer)[-10:]
+# print count_subset
+ax2 = count_subset.plot(kind='barh', stacked=True)
+ax2.get_figure().savefig('asdf2.png')
