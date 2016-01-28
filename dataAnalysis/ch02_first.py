@@ -5,14 +5,24 @@ __author__ = 'krilo'
 import json
 
 path = 'data/usagov_bitly_data2012-03-16-1331923249.txt'
+"""
+資料格式：
+{ "a": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/535.11 (KHTML, like Gecko) Chrome\/17.0.963.78 Safari\/535.11",
+"c": "US", "nk": 1, "tz": "America\/New_York", "gr": "MA", "g": "A6qOVH", "h": "wfLQtf", "l": "orofrog",
+"al": "en-US,en;q=0.8", "hh": "1.usa.gov", "r": "http:\/\/www.facebook.com\/l\/7AQEFzjSi\/1.usa.gov\/wfLQtf",
+"u": "http:\/\/www.ncbi.nlm.nih.gov\/pubmed\/22415991", "t": 1331923247, "hc": 1331822918, "cy": "Danvers", "ll": [ 42.576698, -70.954903 ] }
+
+"""
+
 # json 的使用，列表推導式的表達法
 records = [json.loads(line) for line in open(path)]
-print records[0]
-print records[0].get('tz')
+print "取得第一筆資料： ", records[0]
+print "其中'tz'的值： ", records[0].get('tz')
 
 # 下面的寫法是因為有的raw 中的 'tz'是空的
+# records 為一dict , rec['tz'] 為 dict 生成式的運算式
 time_zones = [rec['tz'] for rec in records if 'tz' in rec]
-print time_zones[:10]
+print "前10筆的時區：", time_zones[:10]
 
 # 得到前10的時區及總計
 from collections import defaultdict
@@ -35,12 +45,24 @@ print '前10個時區及統計：'
 for top10 in top_counts(get_counts(time_zones)):
     print top10
 
-print '使用 Pandas'
+print "================================"
+print '使用 Pandas\n'
 
 from pandas import DataFrame, Series
-import pandas as pd;
+import pandas as pd
 import numpy as np
 
 frame = DataFrame(records)
-print frame['tz'][:10]
+print "summary view: \n 前10筆: \n", frame['tz'][:10]
+
+tz_counts = frame['tz'].value_counts()
+print "\nvalue_counts: 統計相同的城市(依數字排序):\n", tz_counts[:5]
+
+clean_tz = frame['tz'].fillna('Missing')  # fillna 可以替換缺失值
+clean_tz[clean_tz == ''] = 'Unknown'
+tz_counts = clean_tz.value_counts()
+
+print "\n將NA補上： \n", tz_counts[:5]
+print "\n其中Missing的有：", tz_counts['Missing'], "筆."
+
 
