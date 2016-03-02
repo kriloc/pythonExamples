@@ -88,6 +88,7 @@ print agg_count[:10]
 indexer = agg_count.sum(1).argsort()
 print "最常出現時區： \n", indexer[:10]
 
+# 印出堆疊圖
 count_subset = agg_count.take(indexer)[-10:]
 # print count_subset
 ax2 = count_subset.plot(kind='barh', stacked=True)

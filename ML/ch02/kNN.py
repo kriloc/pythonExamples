@@ -59,3 +59,9 @@ def file2matrix(filename):
         classLabelVector.append(int(listFromLine[-1]))
         index += 1
     return returnMat,classLabelVector
+
+import kNN
+reload(kNN)
+a, b = kNN.file2matrix('datingTestSet2.txt')
+print "a:", a
+print "b:", b
