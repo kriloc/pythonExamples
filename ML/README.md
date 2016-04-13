@@ -1,4 +1,4 @@
-範例此書為"Machine Learning" / "機器學習系統設計"
+範例此書為"Machine Learning" / "機器學習實戰"
 
 ch02:
 import kNN
