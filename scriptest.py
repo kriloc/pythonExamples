@@ -4,4 +4,6 @@ __author__ = 'krilo'
 a = ['a', 'b', 'c', 'd']
 print a[:3]
 
-print('array element: {}'.format(a.find('d')))
+# print('array element: {}'.format(a.find('d')))
+
+from sklearn import svm

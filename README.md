@@ -5,6 +5,9 @@ DesignPattern:
 Mastering Python Design Patterns
 將 code 從 3.x 語法改成 2.7.x 能執行
 
+ML:
+"Machine Learning in action" / "機器學習實戰"
+
 DataAnalysis:
 利用Python進行數據分析
 
