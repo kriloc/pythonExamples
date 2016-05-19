@@ -1,7 +1,7 @@
 # coding=UTF-8
 __author__ = 'krilo'
 
-### ch02 example
+### ch02 example 飯粒
 import json
 
 path = 'data/usagov_bitly_data2012-03-16-1331923249.txt'
