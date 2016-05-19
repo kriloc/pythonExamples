@@ -1,4 +1,4 @@
-範例此書為"利用Python進行數據分析" Oreilly ,
+範例此書為"利用Python進行數據分析" (Python for Data Analysis, Oreilly)
 
 ch05 pandas入門
 
