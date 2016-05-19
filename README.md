@@ -8,8 +8,8 @@ Mastering Python Design Patterns
 ML:
 "Machine Learning in action" / "機器學習實戰"
 
-DataAnalysis:
-利用Python進行數據分析
+PythonforDataAnalysis:
+利用Python進行數據分析 (Oreilly)
 
 AnalysisAndMining:
 Python數據分析與挖掘實戰(2016.01)
